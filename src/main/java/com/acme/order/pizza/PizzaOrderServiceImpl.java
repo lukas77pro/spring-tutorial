@@ -3,6 +3,9 @@ package com.acme.order.pizza;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import lombok.extern.slf4j.Slf4j;
 
 import com.acme.order.Customer;
@@ -20,6 +23,7 @@ import com.acme.order.notification.OrderCancelledTemplate;
 import com.acme.order.notification.SimpleMessageTemplateService;
 
 @Slf4j
+@Component
 public class PizzaOrderServiceImpl implements PizzaOrderService {
 
 	private final MailSender mailSender;
@@ -40,6 +44,7 @@ public class PizzaOrderServiceImpl implements PizzaOrderService {
 		this.mailSender = new MailSender();
 	}
 
+	@Autowired
 	public PizzaOrderServiceImpl(MailSender mailSender, OrderRepository orderRepository, OrderFactory orderFactory,
 			DeliveryTimeService deliveryTimeService, MessageTemplateService messageTemplate) {
 		this.orderFactory = orderFactory;

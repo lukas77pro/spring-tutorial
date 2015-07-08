@@ -2,6 +2,8 @@ package com.acme.order.pizza;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.acme.order.Customer;
 
 public interface PizzaOrderService {

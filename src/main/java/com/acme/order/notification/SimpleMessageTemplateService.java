@@ -1,5 +1,9 @@
 package com.acme.order.notification;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class SimpleMessageTemplateService implements MessageTemplateService {
 
 	private final DeliveryTemplate deliveryTemplate;
@@ -8,6 +12,12 @@ public class SimpleMessageTemplateService implements MessageTemplateService {
 	public SimpleMessageTemplateService() {
 		this.deliveryTemplate = new DeliveryTemplate();
 		this.cancelDeliveryTemplate = new OrderCancelledTemplate();
+	}
+	
+	@Autowired
+	public SimpleMessageTemplateService(DeliveryTemplate deliveryTemplate, OrderCancelledTemplate orderCancelledTemplate) {
+		this.deliveryTemplate = deliveryTemplate;
+		this.cancelDeliveryTemplate = orderCancelledTemplate;
 	}
 
 	@Override
